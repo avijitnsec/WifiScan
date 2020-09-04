@@ -13,7 +13,7 @@ import com.example.wifiscan.data.wifiData
  * TODO: Replace the implementation with code for your data type.
  */
 class MyItemRecyclerViewAdapter(
-    private val values: List<wifiData.DummyItem>
+    private val values: List<wifiData.WifiNetworkInfo>
 ) : RecyclerView.Adapter<MyItemRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

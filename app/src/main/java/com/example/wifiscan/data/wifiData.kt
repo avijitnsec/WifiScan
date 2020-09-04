@@ -14,14 +14,14 @@ object wifiData {
     /**
      * An array of sample (dummy) items.
      */
-    val ITEMS: MutableList<DummyItem> = ArrayList()
+    val ITEMS: MutableList<WifiNetworkInfo> = ArrayList()
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    val ITEM_MAP: MutableMap<String, DummyItem> = HashMap()
+    val ITEM_MAP: MutableMap<String, WifiNetworkInfo> = HashMap()
 
-    private val COUNT = 15
+    private const val COUNT = 15
     private var wifiManager = null
 
     private var mContext = null
@@ -31,7 +31,7 @@ object wifiData {
         listAvailableWifi()
         // Add some sample items.
         for (i in 1..COUNT) {
-            addItem(createDummyItem(i))
+            addItem(createWifiItem(i))
         }
     }
 
@@ -40,13 +40,13 @@ object wifiData {
         
     }
 
-    private fun addItem(item: DummyItem) {
+    private fun addItem(item: WifiNetworkInfo) {
         ITEMS.add(item)
-        ITEM_MAP.put(item.id, item)
+        ITEM_MAP[item.id] = item
     }
 
-    private fun createDummyItem(position: Int): DummyItem {
-        return DummyItem(position.toString(), "Item " + position, makeDetails(position))
+    private fun createWifiItem(position: Int): WifiNetworkInfo {
+        return WifiNetworkInfo(position.toString(), "Item $position", makeDetails(position))
     }
 
     private fun makeDetails(position: Int): String {
@@ -61,7 +61,7 @@ object wifiData {
     /**
      * A dummy item representing a piece of content.
      */
-    data class DummyItem(val id: String, val content: String, val details: String) {
+    data class WifiNetworkInfo(val id: String, val content: String, val details: String) {
         override fun toString(): String = content
     }
 }
